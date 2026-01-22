@@ -29,8 +29,6 @@ services:
     ports:
       - "8085:80"
 
-
-
 volumes:
   ny_taxi_postgres_data:
   pgadmin_data:
@@ -87,6 +85,10 @@ docker-compose down -v
 If you want to re-run the dockerized ingest script when you run Postgres and pgAdmin with `docker compose`, you will have to find the name of the virtual network that Docker compose created for the containers.
 
 ```bash
+docker compose up -d
+
+docker build -t taxi_ingest:v001 .
+
 # check the network link:
 docker network ls
 
@@ -96,11 +98,15 @@ docker run -it \
   --network=pipeline_default \
   taxi_ingest:v001 \
     --pg-user=root \
-    --pg-password=root \
+    --pg-pass=root \
     --pg-host=pgdatabase \
     --pg-port=5432 \
     --pg-db=ny_taxi \
     --target-table=yellow_taxi_trips
+
+docker compose down --volumes
 ```
+
+Then login pgAdmin in http://localhost:8085 with username/ password. After that, register new server to query data.
 
 **[↑ Up](README.md)** | **[← Previous](08-dockerizing-ingestion.md)** | **[Next →](10-sql-refresher.md)**
