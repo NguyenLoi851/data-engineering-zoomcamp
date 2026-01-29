@@ -106,7 +106,7 @@ In the Jupyter notebook, we create code to:
 ### Install SQLAlchemy
 
 ```bash
-uv add sqlalchemy psycopg2-binary
+uv add sqlalchemy "psycopg[binary,pool]"
 ```
 
 ### Create Database Connection
@@ -161,6 +161,7 @@ We don't want to insert all the data at once. Let's do it in batches and use an 
 
 ```python
 df_iter = pd.read_csv(
+    prefix + 'yellow_tripdata_2021-01.csv.gz',
     dtype=dtype,
     parse_dates=parse_dates,
     iterator=True,

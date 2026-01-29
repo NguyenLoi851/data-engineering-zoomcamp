@@ -94,7 +94,7 @@ docker network ls
 
 # it's pipeline_default (or similar based on directory name)
 # now run the script:
-docker run -it \
+docker run -it --rm\
   --network=pipeline_default \
   taxi_ingest:v001 \
     --pg-user=root \
