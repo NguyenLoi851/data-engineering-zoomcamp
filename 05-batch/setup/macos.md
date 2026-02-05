@@ -26,6 +26,14 @@ export JAVA_HOME=/usr/local/Cellar/openjdk@11/11.0.12
 export PATH="$JAVA_HOME/bin/:$PATH"
 ```
 
+To make the changes persist after restarting your terminal, append them to your shell config file and reload it. If you don't use zsh, replace `~/.zshrc` with your shell's config file (e.g. `~/.bash_profile` or `~/.bashrc` for bash, `~/.config/fish/config.fish` for fish). You can check your current shell with `echo $SHELL`.
+
+```bash
+echo 'export JAVA_HOME=/usr/local/Cellar/openjdk@11/11.0.12' >> ~/.zshrc
+echo 'export PATH="$JAVA_HOME/bin/:$PATH"' >> ~/.zshrc
+source ~/.zshrc
+```
+
 Make sure Java was installed to `/usr/local/Cellar/openjdk@11/11.0.12`: Open Finder > Press Cmd+Shift+G > paste "/usr/local/Cellar/openjdk@11/11.0.12". If you can't find it, then change the path location to appropriate path on your machine. You can also run `brew info java` to check where java was installed on your machine.
 
 #### Anaconda
@@ -84,6 +92,16 @@ export PATH="$JAVA_HOME/bin/:$PATH"
 
 export SPARK_HOME=/opt/homebrew/Cellar/apache-spark/3.5.5/libexec
 export PATH="$SPARK_HOME/bin/:$PATH"
+```
+
+To make the changes persist after restarting your terminal, append them to your shell config file and reload it. If you don't use zsh, replace `~/.zshrc` with your shell's config file (e.g. `~/.bash_profile` or `~/.bashrc` for bash, `~/.config/fish/config.fish` for fish). You can check your current shell with `echo $SHELL`.
+
+```bash
+echo 'export JAVA_HOME=/opt/homebrew/Cellar/openjdk@17/17.0.14' >> ~/.zshrc
+echo 'export PATH="$JAVA_HOME/bin/:$PATH"' >> ~/.zshrc
+echo 'export SPARK_HOME=/opt/homebrew/Cellar/apache-spark/3.5.5/libexec' >> ~/.zshrc
+echo 'export PATH="$SPARK_HOME/bin/:$PATH"' >> ~/.zshrc
+source ~/.zshrc
 ```
 
 
