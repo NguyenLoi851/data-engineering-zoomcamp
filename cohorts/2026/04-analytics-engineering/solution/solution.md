@@ -97,12 +97,13 @@ Which zone had the highest revenue?
 - Washington Heights South
 
 ```bash
-SELECT pickup_zone FROM `dbt-study-486006.dbt_lnguyen.fct_monthly_zone_revenue` 
+SELECT pickup_zone, sum(revenue_monthly_total_amount) FROM `dbt-study-486006.dbt_lnguyen.fct_monthly_zone_revenue` 
 where service_type = "Green"
 and revenue_month >= '2020-01-01'
 and revenue_month <= '2020-12-31'
-order by revenue_monthly_total_amount desc
-limit 1
+group by pickup_zone
+order by sum(revenue_monthly_total_amount) desc
+limit 5
 
 >> A
 ```
@@ -140,7 +141,7 @@ Create a staging model for the **For-Hire Vehicle (FHV)** trip data for 2019.
 What is the count of records in `stg_fhv_tripdata`?
 
 - 42,084,899
-- 43,244,696
+- 43,244,693
 - 22,998,722
 - 44,112,187
 
@@ -157,9 +158,9 @@ What is the count of records in `stg_fhv_tripdata`?
 3. Query on BQ
   ```bash
   SELECT count(*) FROM `dbt-study-486006.dbt_lnguyen.stg_fhv_tripdata`;
+  
+  >> B
   ```
-
->> 43244693
 ---
 
 ## Submitting the solutions
