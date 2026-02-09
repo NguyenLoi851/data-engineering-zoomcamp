@@ -16,3 +16,4 @@ serving_dir
 !week_6_stream_processing/avro_example/data/rides.csv
 *.parquet
 *.csv
+!cohorts/2026/05-data-platforms/solution/my-pipeline/pipeline/assets/ingestion/payment_lookup.csv
